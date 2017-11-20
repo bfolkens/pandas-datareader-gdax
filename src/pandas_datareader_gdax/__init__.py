@@ -17,8 +17,6 @@ def get_data_gdax(product, granularity=30*60, start=(datetime.now() - timedelta(
     period_end = start + step
 
     while period_end <= end:
-        print period_start, period_end
-
         # Retrieve the set
         records = public_client.get_product_historic_rates(product, granularity=granularity, start=period_start.isoformat(), end=period_end.isoformat())
         if not isinstance(records, (list)):
