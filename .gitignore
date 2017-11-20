@@ -1,0 +1,7 @@
+__pycache__
+.cache
+.ipynb_checkpoints
+.tox
+*.egg-*
+*.pyc
+dist/
