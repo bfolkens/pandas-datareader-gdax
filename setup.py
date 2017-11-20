@@ -11,7 +11,6 @@ setup(
     url='https://github.com/bfolkens/pandas-datareader-gdax',
     license='BSD license',
     description='GDAX data for Pandas in the style of DataReader.',
-    long_description=open('README.rst').read(),
     install_requires=[
         "numpy >= 1.13.0",
         "pandas >= 0.20.3",
