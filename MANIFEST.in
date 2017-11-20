@@ -1,3 +1,4 @@
 graft src
 
 include LICENSE
+include README.rst
