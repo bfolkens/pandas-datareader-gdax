@@ -17,6 +17,8 @@ Installation
 Example
 =======
 
+.. code-block:: python
+
   import pytz
   from datetime import datetime
   from pandas_datareader_gdax import get_data_gdax
