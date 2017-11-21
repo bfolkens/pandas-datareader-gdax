@@ -14,12 +14,10 @@ def get_data_gdax(product, granularity=30*60, start=(datetime.now() - timedelta(
 
     periods = (end - start).total_seconds() / granularity
     period_start = start
+    period_end = start + step
 
-    # Only break up the requests into chunks if it makes sense
-    if (granularity * 200) > (end - start).total_seconds():
+    if period_end > end:
         period_end = end
-    else:
-        period_end = start + step
 
     while period_end <= end:
         # Retrieve the set
@@ -28,7 +26,8 @@ def get_data_gdax(product, granularity=30*60, start=(datetime.now() - timedelta(
             raise TypeError("Instance is not a list: %s" % records)
 
         # GDAX has a strict use policy
-        sleep(delay)
+        if delay and delay > 0:
+            sleep(delay)
 
         # Iterate and observe any remaining elements after boundary
         period_start += step
