@@ -14,7 +14,12 @@ def get_data_gdax(product, granularity=30*60, start=(datetime.now() - timedelta(
 
     periods = (end - start).total_seconds() / granularity
     period_start = start
-    period_end = start + step
+
+    # Only break up the requests into chunks if it makes sense
+    if (granularity * 200) > (end - start).total_seconds():
+        period_end = end
+    else:
+        period_end = start + step
 
     while period_end <= end:
         # Retrieve the set
